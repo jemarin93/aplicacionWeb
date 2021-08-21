@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>    
+        <title>User Registration Form</title>
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div  class="col-sm-4">
+                    <h2 style="text-align: center">Crear cliente</h2>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="username" class="control-label col-sm-4">Nombre</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="name-id" value="#{user.name}" class="form-control" validatorMessage="Campo nombre obligatorio">
+                        <f:validateRequired />
+                    </h:inputText>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="email" class="control-label col-sm-4">Email</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="email-id" value="#{user.email}" class="form-control" validatorMessage="Formato de email no valido">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </h:inputText>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="username" class="control-label col-sm-4">Ingresos</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="user-name-id" value="#{user.ingresos}" class="form-control" validatorMessage="Campo ingresos obligatorio">
+                        <f:validateRequired />
+                    </h:inputText>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="col-sm-2">
+                        <h:commandButton value="Guardar" action="#{user.saveSolicitud()}" class="btn btn-success" style="width: 80px;"></h:commandButton>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-2">
+                        <h:link outcome="index" value="Salir" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            <div  class="form-group">
+                <center>
+                    <h:outputText style="color:green" value="#{user.mensaje}"/>
+                    <h:outputText style="color:red" value="#{user.mensajeError}"/>
+                </center>
+            </div>
+        </h:form>
+    </h:body>
+</html>

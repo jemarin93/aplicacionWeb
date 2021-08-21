@@ -32,7 +32,7 @@
             <div class="form-group">
                 <h:outputLabel for="username" class="control-label col-sm-4">Usuario</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="name-id" value="#{user.name}" class="form-control" validatorMessage="User name is required">
+                    <h:inputText id="name-id" value="#{user.user}" class="form-control" validatorMessage="User name is required">
                         <f:validateRequired />
                     </h:inputText>
                 </div>
@@ -48,6 +48,7 @@
             <div  class="form-group">
                 <center>
                     <h:outputText style="color:red" value="#{user.mensaje}"/>
+                    <h:outputText style="color:red" value="#{user.mensajeError}"/>
                 </center>
             </div>
             <br/>

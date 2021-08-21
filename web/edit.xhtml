@@ -11,29 +11,51 @@
         <h:form id="form" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-2"></div>
-                <h2 style="text-align: center" class="col-sm-4">Edit Your Record</h2>
+                <h2 style="text-align: center" class="col-sm-4">Editar Cliente</h2>
             </div>
             <hr/>
             <div class="form-group">
-                <h:outputLabel for="username" class="control-label col-sm-2">User Name</h:outputLabel>
+                <h:outputLabel for="username" class="control-label col-sm-4">Nombre</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="name-id" value="#{editUser.name}" class="form-control"/>
+                    <h:inputText id="name-id" value="#{editUser.name}" class="form-control" validatorMessage="Campo nombre obligatorio">
+                        <f:validateRequired />
+                    </h:inputText>
                 </div>
             </div>
             <div class="form-group">
-                <h:outputLabel for="email" class="control-label col-sm-2">Your Email</h:outputLabel>
+                <h:outputLabel for="username" class="control-label col-sm-4">Apellido</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="email-id" value="#{editUser.email}" class="form-control"/>
+                    <h:inputText id="last-name-id" value="#{editUser.lastName}" class="form-control" validatorMessage="Campo apellido obligatorio">
+                        <f:validateRequired />
+                    </h:inputText>
                 </div>
             </div>
             <div class="form-group">
-                <h:outputLabel for="password" class="control-label col-sm-2">Password</h:outputLabel>
+                <h:outputLabel for="username" class="control-label col-sm-4">Usuario</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputSecret id="password-id" value="#{editUser.password}" class="form-control"/>
+                    <h:inputText id="user-id" value="#{editUser.user}" class="form-control"  validatorMessage="Campo usuario obligatorio"> 
+                        <f:validateRequired />
+                    </h:inputText>
                 </div>
             </div>
             <div class="form-group">
-                <h:outputLabel for="gender" class="control-label col-sm-2">Gender</h:outputLabel>
+                <h:outputLabel for="email" class="control-label col-sm-4">Email</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="email-id" value="#{editUser.email}" class="form-control" validatorMessage="Formato de email no valido">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </h:inputText>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="address" class="control-label col-sm-4">Address</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputTextarea value="#{editUser.address}" cols="50" rows="5" class="form-control"  validatorMessage="Campo dirección obligatorio"> 
+                        <f:validateRequired />
+                    </h:inputTextarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="gender" class="control-label col-sm-4">Gender</h:outputLabel>
                 <div class="col-sm-4">
                     <h:selectOneRadio value="#{editUser.gender}">
                         <f:selectItem itemValue="M" itemLabel="Male" />
@@ -42,16 +64,30 @@
                 </div>
             </div>
             <div class="form-group">
-                <h:outputLabel for="address" class="control-label col-sm-2">Address</h:outputLabel>
+                <h:outputLabel for="password" class="control-label col-sm-4">Contraseña</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputTextarea value="#{editUser.address}" cols="50" rows="5" class="form-control"/>
+                    <h:inputSecret id="password-id" value="#{editUser.password}" class="form-control"  validatorMessage="Campo contraseña obligatorio">
+                        <f:validateRequired/>
+                    </h:inputSecret>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4">
-                    <center><h:commandButton value="Update" action="#{user.update(editUser)}" class="btn btn-primary" style="width: 80px;"></h:commandButton></center>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1">
+                    <center><h:commandButton value="Modificar" action="#{user.update(editUser)}" class="btn btn-success" style="width: 80px;"></h:commandButton></center>
                 </div>
+                <div class="col-sm-1">
+                    <h:link outcome="solicitud.xhtml?faces-redirect=true" value="Solicitar tarjeta" class="btn btn-success" />
+                </div>
+                <div class="col-sm-1">
+                    <h:link outcome="index" value="Regresar" class="btn btn-primary" />
+                </div>
+            </div>
+            <div  class="form-group">
+                <center>
+                    <h:outputText style="color:green" value="#{user.mensaje}"/>
+                    <h:outputText style="color:red" value="#{user.mensajeError}"/>
+                </center>
             </div>
         </h:form>
     </h:body>

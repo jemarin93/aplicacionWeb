@@ -5,19 +5,31 @@
         <param-value>Development</param-value>
     </context-param>
     <context-param>
-    <param-name>
+        <param-name>
         javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
     </param-name>
-    <param-value>true</param-value>
-</context-param>
+        <param-value>true</param-value>
+    </context-param>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>WebServiceUser</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WebServiceUser</servlet-name>
+        <url-pattern>/WebServiceUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
